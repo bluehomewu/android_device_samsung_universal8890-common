@@ -325,7 +325,8 @@ PRODUCT_PACKAGES += \
 # Shims
 PRODUCT_PACKAGES += \
     libexynoscamera_shim \
-    libexynosdisplay_shim
+    libexynosdisplay_shim \
+    libcutils_shim
 
 # Stagefright
 PRODUCT_PACKAGES += \
