@@ -36,6 +36,10 @@ static const std::vector<std::string> cpuInteractivePaths = {
     "/sys/devices/system/cpu/cpu4/cpufreq/interactive"
 };
 
+static const std::vector<std::string> cpuHmpPaths = {
+    "/sys/kernel/hmp"
+};
+
 /* double tap to wake node */
 #define TAP_TO_WAKE_NODE "/sys/android_touch/doubletap2wake"
 

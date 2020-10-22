@@ -147,6 +147,7 @@ void Power::initialize() {
         max_freqs.emplace_back(get<std::string>(sysfsPath + "/cpufreq/scaling_max_freq", ""));
     }
 
+    set(cpuHmpPaths.at(0) + "/boostpulse_duration", "1500000");
     set(cpuInteractivePaths.at(0) + "/timer_rate", "20000");
     set(cpuInteractivePaths.at(0) + "/timer_slack", "20000");
     set(cpuInteractivePaths.at(0) + "/min_sample_time", "40000");
@@ -213,14 +214,19 @@ void Power::setProfile(PowerProfile profile) {
 void Power::sendBoostpulse() {
     // the boostpulse node is only valid for the LITTLE cluster
     set(cpuInteractivePaths.front() + "/boostpulse", "1");
+
+    // boost also HMP
+    set(cpuHmpPaths.front() + "/boostpulse", "1");
 }
 
 void Power::sendBoost(int duration_us) {
     set(cpuInteractivePaths.front() + "/boost", "1");
+    set(cpuHmpPaths.front() + "/boost", "1");
 
     usleep(duration_us);
 
     set(cpuInteractivePaths.front() + "/boost", "0");
+    set(cpuHmpPaths.front() + "/boost", "0");
 }
 
 }  // namespace implementation

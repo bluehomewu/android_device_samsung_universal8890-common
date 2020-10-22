@@ -688,6 +688,14 @@ on fs
     chown system radio /sys/kernel/hmp/family_boost
     chmod 0664 /sys/kernel/hmp/family_boost
 
+    # Permissions for HMP
+    chown system system /sys/kernel/hmp/boost
+    chmod 0664 /sys/kernel/hmp/boost
+    chown system system /sys/kernel/hmp/boostpulse
+    chmod 0664 /sys/kernel/hmp/boostpulse
+    chown system system /sys/kernel/hmp/boostpulse_duration
+    chmod 0664 /sys/kernel/hmp/boostpulse_duration
+
     # Permissions for ION
     chmod 0660 /sys/class/ion_cma/ion_video_ext/isolated
     chown system system /sys/class/ion_cma/ion_video_ext/isolated
