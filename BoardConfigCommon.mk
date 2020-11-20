@@ -37,8 +37,6 @@ TARGET_2ND_CPU_VARIANT := generic
 TARGET_2ND_CPU_VARIANT_RUNTIME := cortex-a53.a57
 
 # Audio
-AUDIOSERVER_MULTILIB := 32
-TARGET_AUDIOHAL_VARIANT := samsung
 USE_XML_AUDIO_POLICY_CONF := 1
 
 # Binder API version
@@ -110,6 +108,9 @@ BACKLIGHT_PATH := "/sys/class/backlight/panel/brightness"
 
 # LMKD stats logging
 TARGET_LMKD_STATS_LOG := true
+
+# Malloc hack
+MALLOC_SVELTE := true
 
 # Memfd
 TARGET_HAS_MEMFD_BACKPORT := true
