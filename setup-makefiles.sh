@@ -23,9 +23,9 @@ export INITIAL_COPYRIGHT_YEAR=2019
 MY_DIR="${BASH_SOURCE%/*}"
 if [[ ! -d "$MY_DIR" ]]; then MY_DIR="$PWD"; fi
 
-LINEAGE_ROOT="$MY_DIR"/../../..
+HAVOC_ROOT="$MY_DIR"/../../..
 
-HELPER="$LINEAGE_ROOT"/vendor/lineage/build/tools/extract_utils.sh
+HELPER="$HAVOC_ROOT"/vendor/havoc/build/tools/extract_utils.sh
 if [ ! -f "$HELPER" ]; then
     echo "Unable to find helper script at $HELPER"
     exit 1
@@ -33,7 +33,7 @@ fi
 . "$HELPER"
 
 # Initialize the helper
-setup_vendor "$DEVICE_COMMON" "$VENDOR" "$LINEAGE_ROOT" true
+setup_vendor "$DEVICE_COMMON" "$VENDOR" "$HAVOC_ROOT" true
 
 # Copyright headers and guards
 write_headers "herolte hero2lte"
@@ -45,7 +45,7 @@ write_makefiles "$MY_DIR"/proprietary-files.txt true
 # CUSTOM PART START                                                                               #
 ###################################################################################################
 OUTDIR=vendor/$VENDOR/$DEVICE_COMMON
-(cat << EOF) >> $LINEAGE_ROOT/$OUTDIR/Android.mk
+(cat << EOF) >> $HAVOC_ROOT/$OUTDIR/Android.mk
 include \$(CLEAR_VARS)
 LOCAL_MODULE := libGLES_mali
 LOCAL_MODULE_OWNER := samsung
@@ -77,7 +77,7 @@ ALL_MODULES.\$(LOCAL_MODULE).INSTALLED := \\
 	\$(ALL_MODULES.\$(LOCAL_MODULE).INSTALLED) \$(SYMLINKS)
 include \$(BUILD_PREBUILT)
 EOF
-(cat << EOF) >> $LINEAGE_ROOT/$OUTDIR/$DEVICE_COMMON-vendor.mk
+(cat << EOF) >> $HAVOC_ROOT/$OUTDIR/$DEVICE_COMMON-vendor.mk
 # Create Mali links for Vulkan and OpenCL
 PRODUCT_PACKAGES += libGLES_mali
 EOF
